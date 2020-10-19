@@ -1,14 +1,14 @@
 def nyc_pigeon_organizer(data)
-final_results = data.each_with_object({}) do |(key, value), final_hash|
-  value.each do |inner_key, names|
-    names.each do |name|
-        if !final_hash[name]
-        final_hash[name] = {}
+  final_results = data.each_with_object({}) do |(k,v), new_hash|
+    v.each do |ik, iv|
+      iv.each do |names|
+        if !new_hash[names]
+          new_hash[names] = {}
         end
-        if !final_hash[name][key]
-        final_hash[name][key] = []
+        if !new_hash[names][k]
+          new_hash[names][k] = []
         end
-        final_hash[name][key].push(inner_key.to_s)
+        new_hash[names][k].push(ik.to_s)
       end
     end
   end
